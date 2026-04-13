@@ -27,11 +27,20 @@ const profileTargets: Record<SeedProfileId, string> = {
   baseline_metrics_preview: "/review-plan"
 };
 
+const snapshotTargets = [
+  { value: "/today", label: "Today" },
+  { value: "/progress-calendar", label: "Progress Calendar" },
+  { value: "/review-plan", label: "Review Plan" },
+  { value: "/daily-complete", label: "Daily Summary" },
+  { value: "/onboarding?mode=entry", label: "Onboarding Entry" }
+];
+
 export default function DevTestingClient() {
   const router = useRouter();
   const [status, setStatus] = useState<string>("Ready");
   const [lastApplied, setLastApplied] = useState<SeedProfileId | null>(getLastAppliedSeedProfile());
   const [snapshots, setSnapshots] = useState<SeedSnapshot[]>(getSeedSnapshots());
+  const [snapshotTarget, setSnapshotTarget] = useState<string>("/today");
 
   const snapshotSummary = useMemo(() => {
     if (snapshots.length === 0) {
@@ -66,10 +75,10 @@ export default function DevTestingClient() {
       return;
     }
 
-    const snapshot = saveCurrentAsSnapshot(name);
+    const snapshot = saveCurrentAsSnapshot(name, snapshotTarget);
     setSnapshots(getSeedSnapshots());
     setStatus(
-      `Saved snapshot "${snapshot.name}" with ${snapshot.commitmentCount} commitments and ${snapshot.loggedDayCount} logged days.`
+      `Saved snapshot "${snapshot.name}" with ${snapshot.commitmentCount} commitments and ${snapshot.loggedDayCount} logged days (target ${snapshot.targetPath}).`
     );
   };
 
@@ -87,7 +96,8 @@ export default function DevTestingClient() {
     );
 
     if (openTarget) {
-      router.push("/today");
+      const target = snapshots.find((item) => item.id === id)?.targetPath ?? "/today";
+      router.push(target);
     }
   };
 
@@ -149,6 +159,21 @@ export default function DevTestingClient() {
           </div>
 
           <div className={styles.snapshotActions}>
+            <label className={styles.targetLabel} htmlFor="snapshot-target">
+              Snapshot open target
+            </label>
+            <select
+              id="snapshot-target"
+              className={styles.targetSelect}
+              value={snapshotTarget}
+              onChange={(event) => setSnapshotTarget(event.target.value)}
+            >
+              {snapshotTargets.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
             <button type="button" className={`${shared.btn} ${shared.btnPrimary}`} onClick={captureSnapshot}>
               Save Current As Snapshot
             </button>
@@ -161,7 +186,7 @@ export default function DevTestingClient() {
                   <h2>{snapshot.name}</h2>
                   <p>
                     {new Date(snapshot.createdAt).toLocaleString()} | {snapshot.commitmentCount} commitments |{" "}
-                    {snapshot.loggedDayCount} logged days
+                    {snapshot.loggedDayCount} logged days | target {snapshot.targetPath}
                   </p>
                   <button
                     type="button"
@@ -175,7 +200,7 @@ export default function DevTestingClient() {
                     className={`${shared.btn} ${styles.openBtn}`}
                     onClick={() => applySnapshot(snapshot.id, true)}
                   >
-                    Apply + Open Today
+                    Apply + Open Target
                   </button>
                   <button type="button" className={`${shared.btn} ${styles.deleteBtn}`} onClick={() => removeSnapshot(snapshot.id)}>
                     Delete Snapshot

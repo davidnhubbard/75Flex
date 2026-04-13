@@ -29,6 +29,7 @@ type StoredSeedSnapshot = {
   id: string;
   name: string;
   createdAt: string;
+  targetPath?: string;
   data: SeedProfileData;
 };
 
@@ -36,6 +37,7 @@ export type SeedSnapshot = {
   id: string;
   name: string;
   createdAt: string;
+  targetPath: string;
   commitmentCount: number;
   loggedDayCount: number;
 };
@@ -392,17 +394,19 @@ export function getSeedSnapshots(): SeedSnapshot[] {
     id: snapshot.id,
     name: snapshot.name,
     createdAt: snapshot.createdAt,
+    targetPath: snapshot.targetPath ?? "/today",
     commitmentCount: snapshot.data.commitments.length,
     loggedDayCount: Object.keys(snapshot.data.dayLogs).length
   }));
 }
 
-export function saveCurrentAsSnapshot(name: string): SeedSnapshot {
+export function saveCurrentAsSnapshot(name: string, targetPath = "/today"): SeedSnapshot {
   const cleanName = name.trim() || "Untitled snapshot";
   const entry: StoredSeedSnapshot = {
     id: `snapshot_${Date.now()}`,
     name: cleanName,
     createdAt: new Date().toISOString(),
+    targetPath,
     data: readCurrentSeedData()
   };
 
@@ -414,6 +418,7 @@ export function saveCurrentAsSnapshot(name: string): SeedSnapshot {
     id: entry.id,
     name: entry.name,
     createdAt: entry.createdAt,
+    targetPath: entry.targetPath ?? "/today",
     commitmentCount: entry.data.commitments.length,
     loggedDayCount: Object.keys(entry.data.dayLogs).length
   };
