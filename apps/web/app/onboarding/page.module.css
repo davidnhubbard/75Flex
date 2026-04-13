@@ -1,0 +1,159 @@
+.appShell {
+  background:
+    radial-gradient(circle at 85% 8%, #ff6b351a 0%, transparent 35%),
+    radial-gradient(circle at 5% 75%, #1f8fa71a 0%, transparent 35%),
+    var(--background);
+}
+
+.iconButtonHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.slide {
+  display: none;
+  flex: 1;
+  padding: 12px 24px 0;
+}
+
+.slideActive {
+  display: block;
+}
+
+.hero {
+  min-height: 240px;
+  border-radius: 28px;
+  margin-bottom: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.heroEntry {
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 50%, #00c2a822 0 30%, transparent 31%),
+    var(--card);
+}
+
+.heroBadge {
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--primary);
+  background: #ff6b351f;
+}
+
+.heroComparison {
+  background-image: linear-gradient(130deg, #ff6b3522, #1f8fa71f 60%, #f2c94c1f);
+}
+
+.heroFlow {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 20% 15%, #00c2a817, transparent 40%),
+    radial-gradient(circle at 80% 85%, #ff6b3517, transparent 40%),
+    var(--card);
+}
+
+.flowRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.flowPill {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--foreground);
+  background: #ffffff;
+  border: 1px solid var(--border);
+}
+
+.flowArrow {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px;
+}
+
+.gridCard {
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.content h1 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.subhead {
+  font-weight: 700;
+}
+
+.content p {
+  margin: 0 0 10px;
+  color: var(--muted-foreground);
+  line-height: 1.45;
+}
+
+.controls {
+  padding: 16px 24px 32px;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--muted);
+}
+
+.dotActive {
+  width: 28px;
+  background: var(--primary);
+}
+
+.actions {
+  display: grid;
+  gap: 10px;
+}
+
+.btnLift {
+  box-shadow: 0 10px 24px #ff6b3542;
+}
+
+.btnGhost {
+  color: #b51515;
+  background: #ff4d4f17;
+  border: 1px solid #ff4d4f3a;
+}

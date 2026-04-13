@@ -1,0 +1,19 @@
+{
+  "name": "75flex",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace @app/web",
+    "dev:web:3001": "powershell -ExecutionPolicy Bypass -Command \"$env:PORT='3001'; & 'C:\\Program Files\\nodejs\\npm.cmd' run dev:web\"",
+    "build:web": "npm run build --workspace @app/web",
+    "start:web": "npm run start --workspace @app/web",
+    "test:web": "npm run test --workspace @app/web",
+    "kill:web": "powershell -ExecutionPolicy Bypass -File ./scripts/web-kill.ps1",
+    "clean:web": "powershell -ExecutionPolicy Bypass -File ./scripts/web-recover.ps1",
+    "recover:web": "powershell -ExecutionPolicy Bypass -File ./scripts/web-recover.ps1 -StartDev",
+    "recover:web:3001": "powershell -ExecutionPolicy Bypass -File ./scripts/web-recover.ps1 -StartDev -Port 3001",
+    "recover:web:3001:detached": "powershell -ExecutionPolicy Bypass -File ./scripts/web-recover.ps1 -StartDev -Port 3001 -Detached"
+  }
+}

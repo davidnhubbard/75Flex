@@ -1,0 +1,60 @@
+﻿.header {
+  padding: 16px 24px;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.spacer {
+  width: 40px;
+  height: 40px;
+}
+
+.content {
+  padding: 20px 24px;
+  display: grid;
+  gap: 20px;
+}
+
+.group {
+  display: grid;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  margin-left: 4px;
+}
+
+.input {
+  min-height: 54px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--input);
+  padding: 0 14px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.error {
+  margin: 0;
+  color: var(--destructive);
+  font-size: 13px;
+}
+
+.btn {
+  min-height: 54px;
+  font-size: 17px;
+}
+
+.destructive {
+  background: transparent;
+  color: var(--destructive);
+}

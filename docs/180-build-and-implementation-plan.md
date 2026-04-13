@@ -78,10 +78,124 @@ Create the execution environment and guardrails before meaningful feature coding
 #### Deliverables
 - Repository structure
 - Branching / workflow conventions
+
+---
+
+## 2026-04-12 Execution Tracker (Active)
+
+Use this section as the current working checklist to bring the app to production.  
+Mark each item as complete by changing `[ ]` to `[x]`.
+
+### Phase 1: Product Foundation (1-2 days)
+- [ ] Lock V1 scope (onboarding -> create plan -> today tracking -> daily complete/missed day).
+- [ ] Define "done" behavior for each V1 screen (inputs, actions, outputs).
+- [ ] Finalize business rules (streak logic, missed-day behavior, commitment editing rules).
+- [ ] Write acceptance criteria per route.
+
+### Phase 2: App Architecture (2-3 days)
+- [ ] Finalize route structure and shared app shell in `apps/web`.
+- [ ] Choose and implement state approach (local-first store, then DB-backed flow).
+- [ ] Define domain model contracts: `User`, `Plan`, `Commitment`, `DailyCheckin`, `Streak`.
+- [ ] Document data flow from UI actions to persisted state.
+
+### Phase 3: Backend + Persistence (3-5 days)
+- [ ] Set up database and ORM (Prisma + Postgres).
+- [ ] Implement core write/read operations for plans, commitments, and daily tracking.
+- [ ] Add migrations and seed data for local/dev environments.
+- [ ] Validate streak and daily-summary calculations against spec rules.
+
+### Phase 4: Wire Screens to Real Data (5-8 days)
+- [ ] Connect onboarding and plan-creation screens to persistent APIs/actions.
+- [ ] Connect today/check-in flow to real per-user state.
+- [ ] Replace mock interactions with real mutations and loading/error handling.
+- [ ] Ensure all core routes support mobile and desktop behavior.
+
+### Phase 5: Auth + User Accounts (2-3 days)
+- [ ] Add authentication provider and route protection.
+- [ ] Bind all read/write operations to authenticated user identity.
+- [ ] Add basic account/settings surface.
+
+### Phase 6: Quality + Reliability (3-4 days)
+- [ ] Add unit tests for critical business logic (streak, plan validation, day state).
+- [ ] Add integration tests for core flows (create plan, daily completion).
+- [ ] Add E2E tests for onboarding -> day completion happy path.
+- [ ] Add error tracking + key funnel analytics events.
+
+### Phase 7: Launch Readiness (2-3 days)
+- [ ] Validate environment configuration for preview/production.
+- [ ] Add CI checks (lint, typecheck, tests, build).
+- [ ] Run soft launch with small user cohort and triage top issues.
+- [ ] Finalize release checklist and rollback plan.
+
+### V1 Definition of Done
+- [ ] New user can create a plan in under 5 minutes.
+- [ ] Daily commitments can be completed and progress/streak are accurate.
+- [ ] Missed-day handling is clear and consistent.
+- [ ] User data persists across sessions and devices.
+- [ ] No blocker bugs across onboarding -> daily flow.
+
+### Progress Log
+- 2026-04-12: Initial tracker created.
+- 2026-04-12: MVP re-entry rules finalized in state machine doc (3-day momentum, local-midnight miss evaluation, missed-day reconcile/backfill path, 6-month streak visibility and fresh-start rule).
+- 2026-04-12: Added "What Is 75 Hard?" onboarding reference route and linked it from onboarding entry.
+- 2026-04-12: Updated top-level route map to include grouped flow sections and direct onboarding subpage links.
+- 2026-04-12: Added guided Create Plan placeholder using constrained categories and presets; marked for UX refinement before database implementation.
+- 2026-04-12: Added `progress-calendar` prototype route for monthly complete/partial/missed visibility.
+- 2026-04-12: Added `daily-photo-checkin` prototype route for progress-photo flow coverage.
+- 2026-04-12: Captured future requirement for optional baseline body metrics and multi-photo start set; captured testing requirement for seed-profile switching in QA/dev workflows.
+- 2026-04-12: Expanded seed-profile requirements to include explicit scenario matrix (empty/new, started/active, near day-75 milestone, off-track re-entry) and multi-plan diversity coverage.
+- 2026-04-12: Captured open template-strategy decision for dedicated product/design review (candidate baseline set: `75 Hard`, `75 Soft`, `Blank Guided`) while continuing active flow implementation.
 - Spec file organization finalized
 - Prompting workflow for AI tools
 - Definition of how spec updates, code changes, and documentation changes stay aligned
 - Agreement on which tool is best suited for which work type
+
+### Confirmed Working Strategy (Current)
+- Continue building full flow coverage across screens first.
+- Keep each screen functional enough to test transitions and user journeys.
+- Defer detailed UX polish on selected screens when needed.
+- Convert deferred polish items into explicit tracked tasks before DB phase.
+
+### Deferred UI Follow-ups (Pre-Database Gate)
+- [ ] Refine `create-plan` interaction model to match desired final product behavior (current screen is acceptable placeholder only).
+- [ ] Revisit preset semantics and labels to ensure they match final commitment model.
+- [ ] Resolve template strategy in a dedicated product/design review and lock initial template set (candidate set currently: `75 Hard`, `75 Soft`, `Blank Guided`).
+- [ ] Ensure `create-plan` flow aligns with final onboarding handoff and review-plan expectations.
+- [ ] Validate that all onboarding education links and wording remain consistent with final product language.
+
+### Testing Data Profile Requirements (Pre-Database Gate)
+- [ ] Define named local seed profiles for rapid state switching in QA/dev (for example: `new_user_empty`, `onboarding_incomplete`, `plan_created_not_started`, `active_mid_streak`, `off_track_reentry`).
+- [ ] Define a reset/apply workflow so testers can switch profiles without manual local-storage cleanup.
+- [ ] Ensure seed profile switching is environment-gated and unavailable in production.
+- [ ] Document which routes and expectations each seed profile is intended to validate.
+- [ ] Add at least one profile that includes optional baseline-body-metrics data for future feature validation (non-MVP profile allowed).
+
+#### Minimum Seed Profile Matrix (Initial)
+- [ ] `new_user_empty`: account exists with effectively no behavioral data (no plan, no daily logs).
+- [ ] `started_user_active`: user has created a plan and has begun execution (early active days).
+- [ ] `near_milestone_day_75`: user is approaching challenge completion and can trigger end-of-challenge milestone behavior.
+- [ ] `off_track_reentry`: user has missed days and is returning through re-entry flow.
+
+#### Plan Diversity Requirement for Seed Data
+- [ ] Maintain multiple custom-plan variants across profiles (not one single plan template) to cover richer real-world use cases.
+- [ ] Include at least one strict plan, one balanced plan, and one light/simplified plan profile variant.
+- [ ] Ensure seed profiles can reference distinct commitment mixes so edge cases in evaluation and UI rendering are exercised.
+
+### Next Build Priority
+- Keep expanding and validating end-to-end flow coverage.
+- Capture additional UX gaps as checklist items in this section.
+- Before starting database schema implementation, close or explicitly approve every item in "Deferred UI Follow-ups (Pre-Database Gate)".
+
+### Local Runtime Recovery Workflow
+- Standard cleanup/build recovery command:
+  - `npm run clean:web`
+- Cleanup + immediate dev start:
+  - `npm run recover:web`
+- If Windows shows `Access is denied` or `spawn EPERM`, run the same command from an elevated PowerShell window.
+- Prevention rules:
+  - avoid multiple concurrent web servers for this repo
+  - stop dev server before sleep/restart when possible
+  - prefer one active terminal session for `dev:web`
 
 #### Recommended Tool Posture
 - **Moonchild / D0 / design-oriented tools**

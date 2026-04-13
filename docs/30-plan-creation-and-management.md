@@ -138,6 +138,22 @@ Templates must be:
 
 ---
 
+### Template Strategy Clarification (Open, Captured 2026-04-12)
+
+Template direction is intentionally not finalized yet and remains an open product decision.
+
+Current candidate direction to evaluate:
+- `75 Hard` starter template (faithful baseline reference)
+- `75 Soft` starter template (lower-intensity reference)
+- `Blank Guided` template (empty starting structure with strong suggestions for hydration, exercise, and personal development commitments)
+
+Important:
+- templates are starting points, not locked programs
+- users should be able to edit commitments and targets after selection
+- final template strategy should be resolved in a dedicated product/design review before DB-phase lock
+
+---
+
 ## Plan Constraints (Guardrails)
 
 ### Minimum

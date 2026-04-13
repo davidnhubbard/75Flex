@@ -1,4 +1,4 @@
-# 75 Flex — Master Index & AI Navigation Map
+﻿# 75 Flex â€” Master Index & AI Navigation Map (Nuanced AI Version)
 
 ## Purpose
 
@@ -69,7 +69,9 @@ Use this file to:
 - avoid editing the wrong document
 - assemble the minimum document set for a task
 
-### For AI Tools
+---
+
+### For AI Tools (Critical Loading Rules)
 
 When generating:
 - code
@@ -83,10 +85,11 @@ When generating:
 use this rule:
 
 1. Always include this file
-2. Include only the modules needed for the task
+2. Include only the modules needed for the task (typically 2â€“6)
 3. Do not include the entire spec unless absolutely necessary
 4. Treat module ownership as authoritative
 5. Do not invent behavior that conflicts with the modules
+6. Do not â€œfill gapsâ€ with assumptions â€” missing behavior must be resolved explicitly
 
 ---
 
@@ -103,491 +106,290 @@ The specification hierarchy is:
 If two documents appear to conflict:
 - prefer the more specific module over the general index
 - resolve the inconsistency explicitly
-- do not silently “average” conflicting meanings
+- do not silently â€œaverageâ€ conflicting meanings
 
 ---
 
-## Current Spec Map
+# ðŸ“¦ CURRENT SPEC MAP (Authoritative)
 
-## 00 — Master Index
-**File:** `00-master-index.md`  
-**Purpose:** master navigation layer and AI loading guide
+## 00 â€” Master Index  
+Navigation layer (this document)
 
 ---
 
-## 40 — Daily Logging System
-**File:** `40-daily-logging-system.md`  
-**Purpose:** defines day boundaries, lazy day creation, commitment logging model, editability window, daily logging interaction model, and complete-all behavior.
+## 20 â€” Onboarding & Education  
+Defines:
+- entry flow
+- system explanation
+- user mental model
+- progressive education
 
-Use when working on:
+Primary role:
+Ensures users do not misunderstand the system in ways that break behavior.
+
+---
+
+## 30 â€” Plan Creation & Management  
+Defines:
+- plan structure
+- commitment definition
+- creation flow
+- editing model
+- guardrails against bad plans
+
+Primary role:
+Prevents users from creating plans that guarantee failure.
+
+---
+
+## 40 â€” Daily Logging System  
+Defines:
 - day lifecycle
-- logging UX
-- edit window rules
-- backfill behavior
-- daily interaction patterns
+- logging model
+- editability window
+- backfill rules
+- complete-all behavior
+
+Primary role:
+Defines the core daily interaction loop.
 
 ---
 
-## 60 — Plan Versioning & Historical Integrity
-**File:** `60-plan-versioning-and-historical-integrity.md`  
-**Purpose:** defines hidden plan versioning, historical evaluation rules, same-day plan changes, backfill/version consistency, and day evaluation logic.
+## 50 â€” Off-Track & Recovery System  
+Defines:
+- engagement states (On Track / At Risk / Off Track)
+- consecutive missed-day rules
+- recovery behavior (no reset)
+- re-engagement model
 
-Use when working on:
-- plan edits
+Primary role:
+Bridges failure and continuation without breaking progress.
+
+---
+
+## 60 â€” Plan Versioning & Historical Integrity  
+Defines:
+- hidden versioning
 - historical correctness
-- day evaluation
-- plan version storage
-- same-day re-evaluation behavior
+- same-day plan-change behavior
+- version-aware day evaluation
+
+Primary role:
+Prevents historical corruption.
 
 ---
 
-## 70 — Progress & Feedback System
-**File:** `70-progress-and-feedback-system.md`  
-**Purpose:** defines consistency scoring, progress visualization, summary model, and contextual reinforcement messaging.
+## 70 â€” Progress & Feedback System  
+Defines:
+- consistency score
+- heatmap model
+- summary metrics
+- reinforcement messaging
 
-Use when working on:
-- progress screens
-- heatmaps
-- scoring
-- summary views
-- feedback copy logic
-
----
-
-## 80 — Reminders & Re-engagement
-**File:** `80-reminders-and-reengagement.md`  
-**Purpose:** defines reminder behavior, suppression rules, reminder tone, and re-engagement thresholds.
-
-Use when working on:
-- push reminders
-- inactivity handling
-- return prompts
-- reminder settings behavior
+Primary role:
+Translates behavior into meaningful feedback.
 
 ---
 
-## 100 — Data Model & Schema
-**File:** `100-data-model-and-schema.md`  
-**Purpose:** defines core entities, conceptual fields, relationship model, database documentation rules, view principles, database function usage, and indexing philosophy.
+## 80 â€” Reminders & Re-engagement  
+Defines:
+- reminder timing
+- suppression rules
+- re-engagement messaging
 
-Use when working on:
-- schema design
-- table structure
-- views
-- database functions
-- indexes
-- documentation of DB objects
+Primary role:
+Maintains continuity of engagement over time.
 
 ---
 
-## 110 — Technical Architecture Index
-**File:** `110-technical-architecture-index.md`  
-**Purpose:** entry point for the technical architecture layer and map to submodules.
+## 100 â€” Data Model & Schema  
+Defines:
+- entities
+- relationships
+- structural data rules
 
-Use when working on:
-- API structure
-- auth
-- diagnostics
-- implementation discipline
-- technical decomposition
+Primary role:
+Defines how the system exists in persistent form.
 
 ---
 
-## 111 — API Design Principles
-**File:** `111-api-design-principles.md`  
-**Purpose:** defines REST-oriented API design philosophy, route structure, naming rules, and general API modeling approach.
-
-Use when working on:
-- route design
-- endpoint naming
-- resource hierarchy
-- high-level API consistency
+## 110 â€” Technical Architecture Index  
+Entry point to implementation layer
 
 ---
 
-## 112 — Daily Logging API
-**File:** `112-daily-logging-api.md`  
-**Purpose:** defines day retrieval, entry create/update/delete, day completion shortcut, day-level updates, and server enforcement of editability/backfill rules.
+## 111â€“115 â€” API Layer  
+Defines:
+- REST structure
+- endpoint design
+- domain-specific APIs
 
-Use when working on:
-- `/days`
-- `/entries`
-- day payloads
-- logging endpoints
-
----
-
-## 113 — Plan Management API
-**File:** `113-plan-management-api.md`  
-**Purpose:** defines plan creation, retrieval, whole-plan update model, hidden version creation, and plan version inspection endpoints.
-
-Use when working on:
-- `/plans`
-- plan update flows
-- server-side version creation
-- current plan retrieval
+Primary role:
+Defines how the system is accessed.
 
 ---
 
-## 114 — Progress & Summary API
-**File:** `114-progress-and-summary-api.md`  
-**Purpose:** defines summary, consistency, heatmap, day-count, insight, and range-based progress endpoints.
-
-Use when working on:
-- `/progress`
-- progress dashboard payloads
-- heatmap-ready responses
-- consistency summaries
+## 116 â€” Authentication & Ownership  
+Defines:
+- user context
+- access rules
 
 ---
 
-## 115 — Reminder & Preference API
-**File:** `115-reminder-and-preference-api.md`  
-**Purpose:** defines reminder preference retrieval/update and optional effective reminder state endpoints.
-
-Use when working on:
-- `/reminders/preferences`
-- `/reminders/state`
-- reminder settings persistence
+## 117 â€” Error Handling & Visibility  
+Defines:
+- error surfacing
+- no false success rules
 
 ---
 
-## 116 — Authentication, Authorization & Ownership
-**File:** `116-auth-authorization-and-ownership.md`  
-**Purpose:** defines authenticated-user context, ownership enforcement, indirect ownership checks, auth failure handling, and access control rules.
-
-Use when working on:
-- auth middleware
-- access checks
-- user scoping
-- protected endpoints
+## 118 â€” Debugging & Diagnostics  
+Defines:
+- inspection tools
+- explanation helpers
 
 ---
 
-## 117 — Error Handling & Visibility
-**File:** `117-error-handling-and-visibility.md`  
-**Purpose:** defines error surfacing, no-false-success behavior, user-visible failure rules, and diagnostic logging expectations.
-
-Use when working on:
-- API error responses
-- frontend failure states
-- backend logging
-- operational visibility
+## 119 â€” Documentation Integrity  
+Defines:
+- no drift rules between spec, code, and docs
 
 ---
 
-## 118 — Debugging & Diagnostic Infrastructure
-**File:** `118-debugging-and-diagnostic-infrastructure.md`  
-**Purpose:** defines debug views, explanation-oriented helpers, internal inspection tools, and safe helper boundaries.
-
-Use when working on:
-- debug endpoints
-- diagnostic SQL views/functions
-- support tools
-- admin inspection utilities
+## 120 â€” API Conventions  
+Defines:
+- envelopes
+- pagination
+- cross-cutting rules
 
 ---
 
-## 119 — Documentation & Spec Integrity
-**File:** `119-documentation-and-spec-integrity.md`  
-**Purpose:** defines anti-drift rules between specification, code, schema, and implementation documentation.
-
-Use when working on:
-- process discipline
-- documentation updates
-- code/spec alignment
-- change management
+## 130 â€” Canonical Data Contracts  
+Defines:
+- shared object shapes
+- payload consistency
 
 ---
 
-## 120 — API Conventions
-**File:** `120-api-conventions.md`  
-**Purpose:** defines cross-cutting API rules including response envelopes, pagination, filtering, sorting, idempotency, tracing, optimistic UI reconciliation, and validation posture.
+## 140 â€” State Machines & Derived State  
+Defines:
+- day state
+- editability
+- reminder state
+- scoring dependencies
 
-Use when working on:
-- shared API behavior
-- response envelopes
-- correlation IDs
-- retry safety
-- endpoint consistency
-
----
-
-## 130 — Canonical Data Contracts
-**File:** `130-canonical-data-contracts.md`  
-**Purpose:** defines canonical request/response object shapes such as Plan, Commitment, Day, Entry, ProgressSummary, ReminderPreference, ErrorResponse, and PaginatedList.
-
-Use when working on:
-- shared TypeScript types
-- DTOs
-- API contract consistency
-- frontend/backend payload alignment
+Primary role:
+Defines what is true.
 
 ---
 
-## 140 — State Machines & Derived State
-**File:** `140-state-machines-and-derived-state.md`  
-**Purpose:** defines deterministic rules for day state, editability, lock state, backfill eligibility, reminder suppression, re-engagement mode, and consistency-score dependencies.
-
-Use when working on:
-- derived state logic
-- evaluation engines
-- day flags
-- lock rules
-- reminder eligibility
+## 150 â€” Validation Rules  
+Defines:
+- input constraints
+- system-level rules
 
 ---
 
-## 150 — Validation Rules & Constraints
-**File:** `150-validation-rules-and-constraints.md`  
-**Purpose:** defines plan, commitment, day, entry, reminder, cross-field, and system-level validation rules.
-
-Use when working on:
-- server validation
-- frontend form validation
-- database constraints
-- bad-input rejection behavior
+## 160 â€” Event Model & Side Effects  
+Defines:
+- system events
+- side-effect relationships
 
 ---
 
-## 160 — Event Model & Side Effects
-**File:** `160-event-model-and-side-effects.md`  
-**Purpose:** defines canonical system events, event naming, payload expectations, event-triggered side effects, ordering rules, and observability requirements.
-
-Use when working on:
-- event emission
-- analytics/event logging
-- side-effect orchestration
-- system traceability
+## 170 â€” Background Jobs & Processing  
+Defines:
+- async work
+- scheduling
+- retry behavior
 
 ---
 
-## 170 — Background Jobs & Processing
-**File:** `170-background-jobs-and-processing.md`  
-**Purpose:** defines background jobs, synchronous vs asynchronous boundaries, retry rules, scheduling, observability, and failure handling.
-
-Use when working on:
-- reminders
-- re-engagement jobs
-- async recomputation
-- background processing infrastructure
+## 180 â€” Build & Implementation Plan  
+Defines:
+- build sequence
+- execution strategy
+- AI tool usage
 
 ---
 
-## 180 — Build & Implementation Plan
-**File:** `180-build-and-implementation-plan.md`  
-**Purpose:** defines recommended build sequence, UX-first guardrails, phased implementation order, and AI tool usage strategy.
+## 190 â€” Web vs Mobile Development Guide  
+Defines:
+- practical web-first then mobile implementation strategy
+- what transfers directly vs what must be rebuilt for native apps
+- phased migration posture and decision gate before mobile build
 
-Use when working on:
-- project execution sequencing
-- roadmap
-- implementation phases
-- division of labor between design and code tools
+Primary role:
+Reduces planning anxiety and keeps platform transition decisions clear.
 
 ---
+# ðŸ§­ Module Ownership Rules
 
-## Module Ownership Rules
+Each behavior belongs to exactly one primary module.
 
-Each behavior should have one primary home.
+Cross-module duplication is a defect.
 
 Examples:
-
-- day boundaries, lazy creation, logging model  
-  → `40-daily-logging-system.md`
-
-- plan versioning, historical evaluation, same-day change behavior  
-  → `60-plan-versioning-and-historical-integrity.md`
-
-- consistency score, heatmap model, reinforcement feedback  
-  → `70-progress-and-feedback-system.md`
-
-- reminders and re-engagement thresholds  
-  → `80-reminders-and-reengagement.md`
-
-- entity structure, fields, views, functions, indexes  
-  → `100-data-model-and-schema.md`
-
-- endpoint design and route behavior  
-  → `111` through `115`
-
-- auth / ownership  
-  → `116-auth-authorization-and-ownership.md`
-
-- error visibility  
-  → `117-error-handling-and-visibility.md`
-
-- debug helpers  
-  → `118-debugging-and-diagnostic-infrastructure.md`
-
-- canonical payload shapes  
-  → `130-canonical-data-contracts.md`
-
-- derived state rules  
-  → `140-state-machines-and-derived-state.md`
-
-- validation rules  
-  → `150-validation-rules-and-constraints.md`
-
-- event/side-effect behavior  
-  → `160-event-model-and-side-effects.md`
-
-- background processing  
-  → `170-background-jobs-and-processing.md`
+- onboarding â†’ 20  
+- plan creation â†’ 30  
+- logging â†’ 40  
+- recovery â†’ 50  
+- versioning â†’ 60  
+- progress â†’ 70  
+- reminders â†’ 80  
 
 ---
 
-## Recommended Document Sets by Task
+# ðŸ§  AI Working Rules (Strict)
 
-### 1. Daily Logging Backend
-Include:
-- `00-master-index.md`
-- `40-daily-logging-system.md`
-- `60-plan-versioning-and-historical-integrity.md`
-- `112-daily-logging-api.md`
-- `130-canonical-data-contracts.md`
-- `140-state-machines-and-derived-state.md`
-- `150-validation-rules-and-constraints.md`
+- Never rewrite large documents casually
+- Never compress content unless explicitly requested
+- Never assume missing behavior
+- Always defer to module ownership
+- Always preserve system intent over simplification
 
 ---
 
-### 2. Plan Editing / Versioning
-Include:
-- `00-master-index.md`
-- `60-plan-versioning-and-historical-integrity.md`
-- `100-data-model-and-schema.md`
-- `113-plan-management-api.md`
-- `130-canonical-data-contracts.md`
-- `140-state-machines-and-derived-state.md`
-- `150-validation-rules-and-constraints.md`
-
----
-
-### 3. Progress Screen / Progress API
-Include:
-- `00-master-index.md`
-- `70-progress-and-feedback-system.md`
-- `114-progress-and-summary-api.md`
-- `130-canonical-data-contracts.md`
-- `140-state-machines-and-derived-state.md`
-
----
-
-### 4. Reminder Settings / Reminder Engine
-Include:
-- `00-master-index.md`
-- `80-reminders-and-reengagement.md`
-- `115-reminder-and-preference-api.md`
-- `140-state-machines-and-derived-state.md`
-- `150-validation-rules-and-constraints.md`
-- `160-event-model-and-side-effects.md`
-- `170-background-jobs-and-processing.md`
-
----
-
-### 5. Database / Schema Work
-Include:
-- `00-master-index.md`
-- `100-data-model-and-schema.md`
-- `140-state-machines-and-derived-state.md`
-- `150-validation-rules-and-constraints.md`
-- any relevant domain module (`40`, `60`, `70`, `80`)
-
----
-
-### 6. API Contract / Shared Type Work
-Include:
-- `00-master-index.md`
-- `120-api-conventions.md`
-- `130-canonical-data-contracts.md`
-- relevant endpoint module(s)
-- `150-validation-rules-and-constraints.md`
-
----
-
-### 7. Auth / Security / Ownership Work
-Include:
-- `00-master-index.md`
-- `116-auth-authorization-and-ownership.md`
-- `120-api-conventions.md`
-- relevant endpoint module(s)
-
----
-
-### 8. Diagnostics / Internal Inspection
-Include:
-- `00-master-index.md`
-- `117-error-handling-and-visibility.md`
-- `118-debugging-and-diagnostic-infrastructure.md`
-- `160-event-model-and-side-effects.md`
-- `170-background-jobs-and-processing.md`
-
----
-
-## AI Working Rules
-
-When using this spec with AI tools:
-
-- always include this file first
-- never ask the AI to “infer the rest” if the behavior matters
-- give the AI only the modules needed for the task
-- prefer small, specific prompts over giant context dumps
-- require the AI to preserve existing logic unless a change is explicitly requested
-- do not let the AI merge or rewrite large files casually
-- when revising a module, revise only that module unless cross-module updates are explicitly required
-
----
-
-## Spec Maintenance Rules
+# ðŸ”§ Spec Maintenance Rules
 
 When updating the spec:
 
-- do not silently compress content
-- do not remove nuance to “simplify” unless explicitly directed
-- do not rewrite unrelated modules
-- do not let implementation details drift away from documented behavior
-- update the module that owns the behavior
-- update cross-references when a module is split or renamed
-- keep this index stable, readable, and current
-
-If a new file is added:
-- add it here
-- define its ownership clearly
-- clarify which existing files it supplements or replaces
+- Do not silently compress content
+- Do not remove nuance
+- Do not rewrite unrelated modules
+- Update the module that owns behavior
+- Update references when modules change
+- Keep this index aligned with actual files
 
 ---
 
-## Notes on Structure Evolution
+# ðŸ§­ Structure Evolution Notes
 
-The spec has already been decomposed into smaller modules in the technical architecture and cross-cutting layers.
+This system is intentionally expandable.
 
-This is intentional.
-
-As the product evolves, additional modules may be added, especially in areas such as:
-- onboarding
+Future modules may include:
+- user lifecycle
 - monetization
-- off-track / recovery UX
-- admin/internal tooling
 - analytics
-- notification delivery internals
+- integrations
+- admin tooling
 
-This file should continue to act as:
-- the stable map
-- the loading guide
-- the anti-chaos layer
+This index must remain:
+- stable
+- complete
+- authoritative
 
 ---
 
-## Strategic Principle
+# ðŸš€ Strategic Principle
 
-The goal of this documentation system is not minimalism.
+This system is not optimized for minimal size.
 
-The goal is:
+It is optimized for:
 - clarity
-- durability
 - correctness
-- modularity
-- AI-usable structure
+- durability
+- AI-assisted development
 
-Use this file to find the truth.
-
-Use the modules to implement the truth.
+Use this file to find truth.  
+Use modules to implement truth.

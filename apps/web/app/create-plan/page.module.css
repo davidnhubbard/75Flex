@@ -1,0 +1,110 @@
+.header {
+  padding: 18px 24px 12px;
+}
+
+.content {
+  padding: 10px 24px 10px;
+  display: grid;
+  gap: 12px;
+}
+
+.group {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  padding: 12px;
+}
+
+.groupFocus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+.group h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.group p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.options {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.option {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--background);
+  text-align: left;
+  padding: 10px;
+  display: grid;
+  gap: 2px;
+}
+
+.optionSelected {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 10%, var(--background));
+}
+
+.optionTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.optionDetail {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.summary {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  padding: 12px;
+}
+
+.summary h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.summary ul {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.summary li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.summary li span {
+  color: var(--muted-foreground);
+}
+
+.summary li strong {
+  color: var(--foreground);
+}
+
+.loadLine {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.btn {
+  height: 54px;
+  font-size: 17px;
+}

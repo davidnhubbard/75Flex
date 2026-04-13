@@ -1,0 +1,96 @@
+﻿.header {
+  padding: 40px 20px 20px;
+}
+
+.sub {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.summary {
+  margin: 0;
+  color: var(--muted-foreground);
+}
+
+.content {
+  flex: 1;
+  padding: 0 20px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.completion {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.progressText {
+  color: var(--primary);
+  font-size: 14px;
+  margin-top: 3px;
+}
+
+.chev {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.card {
+  border-radius: 16px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cardDone {
+  border: 1px solid var(--primary);
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.cardOpen {
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+
+.check {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 2px solid currentColor;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+}
+
+.state {
+  margin-left: auto;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.empty {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--muted-foreground);
+}

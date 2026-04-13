@@ -1,0 +1,250 @@
+﻿.header {
+  padding: 16px 16px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.menuWrap {
+  position: relative;
+}
+
+.iconBtn {
+  min-width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.menu {
+  position: absolute;
+  top: 46px;
+  right: 0;
+  z-index: 10;
+  min-width: 170px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: 0 10px 20px #0000001c;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: var(--foreground);
+  font-size: 13px;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.menu a:hover {
+  background: var(--secondary);
+}
+
+.dayNav {
+  display: grid;
+  grid-template-columns: 90px 1fr 90px;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.dayBtn {
+  min-height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dayBtnDisabled {
+  opacity: 0.55;
+}
+
+.dayLabel {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted-foreground);
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.datasetBadge {
+  margin-top: 6px;
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  background: var(--card);
+}
+
+.ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  flex-shrink: 0;
+  background: conic-gradient(
+    var(--primary) 0deg,
+    var(--primary) var(--progress-deg, 0deg),
+    var(--muted) var(--progress-deg, 0deg),
+    var(--muted) 360deg
+  );
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: inherit;
+  background: var(--background);
+}
+
+.ring span {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  padding: 12px 14px 12px;
+}
+
+.sectionTitle {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.empty {
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  color: var(--muted-foreground);
+  display: grid;
+  gap: 8px;
+}
+
+.empty p {
+  margin: 0;
+}
+
+.empty a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+}
+
+.task {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--card);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+}
+
+.taskComplete {
+  background: var(--secondary);
+  border-color: transparent;
+}
+
+.status {
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  border: 3px solid var(--muted);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.statusPartial {
+  border-color: transparent;
+  background: conic-gradient(var(--primary) 50%, var(--muted) 0);
+}
+
+.meta {
+  flex: 1;
+  text-decoration: none;
+  color: inherit;
+}
+
+.taskTitle {
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.taskText {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.stateTag {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted-foreground);
+}

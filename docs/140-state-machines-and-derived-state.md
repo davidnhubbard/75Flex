@@ -80,6 +80,80 @@ The system includes at least the following categories of state:
 
 ---
 
+## Onboarding and Re-entry Lifecycle State (MVP)
+
+### Canonical Lifecycle States
+
+For MVP, user landing behavior must resolve to exactly one lifecycle state:
+
+- `onboarding_incomplete`
+- `plan_created_not_started`
+- `active_in_progress`
+- `active_off_track_after_progress`
+
+---
+
+### Lifecycle Resolution Rules
+
+#### onboarding_incomplete
+Apply when:
+- the user has not finished onboarding and plan creation
+
+Landing behavior:
+- resume at the next required onboarding step
+
+#### plan_created_not_started
+Apply when:
+- onboarding is complete
+- a plan exists
+- completed day count is `0`
+
+Landing behavior:
+- show "plan created, ready to start" re-entry surface
+- provide plan review and explicit start action
+
+#### active_in_progress
+Apply when:
+- a plan exists
+- the user has started execution
+- the user is not currently classified as off-track
+
+Landing behavior:
+- route to Today experience
+
+#### active_off_track_after_progress
+Apply when:
+- the user previously achieved momentum
+- the user is now in a miss pattern that requires recovery handling
+
+Landing behavior:
+- route to recovery re-entry sequence (MVP copy can be basic)
+
+---
+
+### Momentum Rule (MVP)
+
+Momentum is achieved when:
+
+- the user has completed at least `3` days
+
+This threshold is used to distinguish:
+- early-stage restart behavior
+- post-momentum recovery behavior
+
+---
+
+### Early Miss Before Momentum (MVP)
+
+If the user misses Day 1 (or early pre-momentum days) before momentum is achieved:
+
+- treat the user as `plan_created_not_started` on re-entry
+- prompt restart from plan review/start screen
+
+This is a soft restart, not a punitive failure mode.
+
+---
+
 ## Day State Definition
 
 ### Canonical Day States
@@ -143,6 +217,25 @@ A day is `Missed` when:
 This includes both:
 - a day record with no satisfied required commitments
 - a calendar day with no Day Record at all, when interpreted in progress calculations
+
+For day closure:
+- day classification is evaluated at user-local midnight boundary
+- unresolved prior day state must be finalized using recorded data only
+
+---
+
+## Missed Day Reconciliation (MVP)
+
+It is possible a user completed actions in real life but did not log in the app.
+
+When a prior day resolves as `Missed`, the next app session should provide a reconciliation choice:
+
+- acknowledge the miss
+- backfill the day, when still inside editable/backfill window
+
+If the day is locked:
+- user can acknowledge only
+- no backfill edits are allowed
 
 ---
 
@@ -364,6 +457,23 @@ If day-state logic changes, consistency interpretation changes as well.
 Therefore:
 - day-state rules and scoring rules must remain aligned
 - scoring must not be computed using a different interpretation of day state
+
+---
+
+## Streak Visibility and Reset Window (MVP)
+
+### Visibility Window
+Primary streak history shown in product surfaces should include:
+
+- streak segments from the last 6 months
+
+### Fresh-Start Rule
+If inactivity exceeds 6 months:
+
+- restart the active streak context as a fresh start
+- do not carry older streak segments into the primary active streak context
+
+Historical records may still exist in storage for audit/reporting, but MVP user-facing streak context restarts.
 
 ---
 

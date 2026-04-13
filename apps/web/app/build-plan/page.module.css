@@ -1,0 +1,118 @@
+﻿.header {
+  padding: 18px 24px 10px;
+}
+
+.content {
+  padding: 8px 24px;
+}
+
+.templateTag {
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  width: fit-content;
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.list {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.item {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.item h2 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.item p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.itemLink {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.empty {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.addLarge {
+  width: 100%;
+  border: 2px dashed var(--border);
+  border-radius: 16px;
+  background: transparent;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 28px 20px;
+  text-decoration: none;
+  color: var(--foreground);
+}
+
+.addIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--secondary);
+  color: var(--primary);
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.addText {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.countLine {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted-foreground);
+}
+
+.inlineLink {
+  margin-top: 14px;
+  display: inline-block;
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn {
+  min-height: 54px;
+  font-size: 17px;
+}
+
+.btnDisabled {
+  opacity: 0.62;
+  pointer-events: none;
+}

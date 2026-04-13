@@ -106,6 +106,11 @@ Examples:
 - Simulated reminder runs
 - Evaluation test fixtures
 
+For this product specifically, preferred seed-data helper posture includes:
+- named scenario profiles (for example: new user, onboarding incomplete, active streak, off-track re-entry)
+- one-command apply/reset switching for local QA runs
+- strict environment gating so profile switching cannot be used in production
+
 These must be environment-gated and never casually exposed in production.
 
 ---

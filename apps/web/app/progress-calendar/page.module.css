@@ -1,0 +1,189 @@
+﻿.header {
+  padding: 14px 18px 10px;
+}
+
+.topRow {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.spacer {
+  width: 40px;
+  height: 40px;
+}
+
+.kicker {
+  margin: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.header h1 {
+  margin: 6px 0 8px;
+  font-size: 30px;
+  letter-spacing: -0.02em;
+}
+
+.sub {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 14px;
+}
+
+.datasetBadge {
+  margin-top: 8px;
+  display: inline-block;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  background: var(--card);
+}
+
+.content {
+  padding: 8px 18px 12px;
+}
+
+.monthRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.monthRow h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.ghostBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+}
+
+.ghostBtn:disabled {
+  opacity: 0.45;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.weekdays span {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cell {
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  background: var(--card);
+}
+
+.cellBtn {
+  cursor: pointer;
+  color: inherit;
+}
+
+.empty {
+  border-style: dashed;
+  opacity: 0.4;
+}
+
+.complete {
+  background: color-mix(in srgb, var(--primary) 16%, var(--card));
+  border-color: color-mix(in srgb, var(--primary) 36%, var(--border));
+}
+
+.partial {
+  background: color-mix(in srgb, var(--secondary) 80%, var(--card));
+  border-color: color-mix(in srgb, var(--secondary-foreground) 15%, var(--border));
+}
+
+.missed {
+  opacity: 0.7;
+}
+
+.today {
+  border: 2px solid var(--primary);
+}
+
+.future {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.summary {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.legend {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.dotComplete {
+  background: color-mix(in srgb, var(--primary) 35%, var(--card));
+}
+
+.dotPartial {
+  background: color-mix(in srgb, var(--secondary-foreground) 25%, var(--card));
+}
+
+.dotMissed {
+  background: var(--muted);
+}
+
+.dotToday {
+  background: var(--background);
+  border-color: var(--primary);
+}

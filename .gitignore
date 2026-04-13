@@ -1,3 +1,11 @@
 # Ignore any directory named "old" (root or nested)
 /old/
 **/old/
+
+# Node / frontend
+node_modules/
+.next/
+dist/
+out/
+.turbo/
+.env*

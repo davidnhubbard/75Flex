@@ -1,0 +1,50 @@
+﻿.content {
+  padding: 10px 24px 28px;
+  display: grid;
+  gap: 20px;
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted-foreground);
+  font-size: 16px;
+}
+
+.block {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  padding: 14px;
+}
+
+.block h2 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.block p {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.btn {
+  min-height: 54px;
+  font-size: 17px;
+}
+
+.btnSecondary {
+  background: transparent;
+  color: var(--foreground);
+}
